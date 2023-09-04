@@ -1,0 +1,164 @@
+.table-wrapper {
+  width: 100%;
+}
+
+.table {
+  display: block;
+  overflow: hidden;
+  table-layout: auto;
+  border-collapse: collapse;
+  box-shadow: 0px 10px 10px #ccc;
+  /* border-radius: 10px; */
+  /* white-space: nowrap; */
+  width: 100%;
+  /* max-width: 95%; */
+  /* margin: auto; */
+  overflow-x: auto;
+}
+
+.table thead {
+  background-color: #ccc;
+  color: #222;
+  white-space: nowrap;
+}
+
+.table th,
+.table td {
+  padding: 0.8rem;
+  border-right: 0.5px solid #ddd;
+}
+
+.table td {
+  border-top: 0.5px solid #ddd;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.table tbody tr:hover {
+  background-color: #eee;
+}
+
+.expand {
+  width: 80%;
+}
+
+.expand3 {
+  width: calc(100% / 3);
+}
+
+.expand4 {
+  width: calc(100% / 4);
+}
+
+.expand5 {
+  width: calc(100% / 5);
+}
+
+.expand6 {
+  width: calc(100% / 6);
+}
+
+.label {
+  border-radius: 3px;
+  padding: 0.3rem;
+  color: white;
+}
+
+.label-off {
+  background-color: #777;
+}
+
+.label-live {
+  background-color: #42a942;
+}
+
+.label-error {
+  background-color: #d9534f;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-around;
+  text-wrap: nowrap;
+}
+
+.actions svg {
+  cursor: pointer;
+}
+
+.delete-btn {
+  color: #d9534f;
+}
+
+.table {
+  border: unset;
+}
+
+.adop-values-container {
+  display: flex;
+  gap: 25px;
+}
+.adopter-container {
+  padding-left: 20px;
+}
+.adopter-container table {
+  border: unset;
+  width: 100%;
+}
+
+.adopter-container table tr {
+  vertical-align: top;
+  text-align: left;
+  margin-bottom: 0.5rem;
+}
+
+.adopter-container table tr th {
+  padding-right: 35px;
+  font-weight: 600;
+  font-size: inherit;
+  line-height: 1.5;
+  text-wrap: nowrap;
+}
+
+.adopter-container table tr td {
+  padding-right: 15px;
+}
+
+.adopted-child-section {
+  margin-top: 15px;
+}
+.reason-container {
+  margin-top: 15px;
+}
+.adopted-child-container {
+  padding-left: 20px;
+  display: flex;
+  gap: 120px;
+}
+.adopted-child-container .adop-child-prop-container {
+  font-weight: 600;
+  font-size: inherit;
+  line-height: 1.5;
+  text-wrap: nowrap;
+}
+.adop-btn-container {
+  display: flex;
+  gap: 12px;
+}
+.confirm-btn {
+  display: flex;
+
+  color: white;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+.accept-btn {
+  background-color: #020096;
+}
+.decline-btn {
+  background-color: #7c0303;
+}
