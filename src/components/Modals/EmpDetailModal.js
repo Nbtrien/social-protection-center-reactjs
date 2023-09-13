@@ -64,9 +64,17 @@ export const EmpDetailModal = ({ onClose, employee }) => {
                   <div className="value">{employee?.job.jobTitle}</div>
                 </div>
                 <div className="detal-wrapper">
-                  <div className="proper">Ngày bắt đầu: </div>
+                  <div className="proper">Ngày nhận việc: </div>
                   <div className="value">{employee?.fromDate}</div>
                 </div>
+                {employee.toDate && (
+                  <>
+                    <div className="detal-wrapper">
+                      <div className="proper">Ngày nghỉ việc: </div>
+                      <div className="value">{employee?.toDate}</div>
+                    </div>
+                  </>
+                )}
                 <div className="detal-wrapper">
                   <div className="proper">Ca làm việc: </div>
                   <div className="value">

@@ -23,27 +23,47 @@ export const AdoptionForm = () => {
   const [formData, setFormData] = useState({});
 
   const [isSuccess, setIsSuccess] = useState(false);
-
   const [husband, setHusband] = useState({
-    firstName: "Trien",
-    lastName: "Nguyen",
+    firstName: "",
+    lastName: "",
     gender: "",
-    nationality: "kinh",
-    addressPermanent: "235, Phường Phúc Xá, Quận Ba Đình, Thành phố Hà Nội",
-    addressTemporary: "235, Phường Phúc Xá, Quận Ba Đình, Thành phố Hà Nội",
+    nationality: "",
+    addressPermanent: "",
+    addressTemporary: "",
     birthday: "",
-    phoneNumber: "0346695213",
-    email: "trien@gmail.com",
-    nation: "Viet Nam",
-    occupation: "kinh doanh",
-    income: "50000",
+    phoneNumber: "",
+    email: "",
+    nation: "",
+    occupation: "",
+    income: "",
     spouse: "",
     relationship: "",
-    citizenIdentNumber: "369852147896",
+    citizenIdentNumber: "",
     issueDate: "",
-    issuePlace: "Cục Cảnh sát quản lý hành chính về trật tự xã hội.",
+    issuePlace: "",
     expireDate: "",
   });
+
+  // const [husband, setHusband] = useState({
+  //   firstName: "Trien",
+  //   lastName: "Nguyen",
+  //   gender: "",
+  //   nationality: "kinh",
+  //   addressPermanent: "235, Phường Phúc Xá, Quận Ba Đình, Thành phố Hà Nội",
+  //   addressTemporary: "235, Phường Phúc Xá, Quận Ba Đình, Thành phố Hà Nội",
+  //   birthday: "",
+  //   phoneNumber: "0346695213",
+  //   email: "trien@gmail.com",
+  //   nation: "Viet Nam",
+  //   occupation: "kinh doanh",
+  //   income: "50000",
+  //   spouse: "",
+  //   relationship: "",
+  //   citizenIdentNumber: "369852147896",
+  //   issueDate: "",
+  //   issuePlace: "Cục Cảnh sát quản lý hành chính về trật tự xã hội.",
+  //   expireDate: "",
+  // });
 
   // const [wife, setWife] = useState({
   //   firstName: "Thi",
@@ -88,12 +108,20 @@ export const AdoptionForm = () => {
   });
 
   const [child, setChild] = useState({
-    fullName: "nguyen van a",
-    gender: "Nam",
+    fullName: "",
+    gender: "",
     birthday: "",
-    nationality: "Viet Nam",
-    citizenIdentNumber: "123456789102",
+    nationality: "",
+    citizenIdentNumber: "",
   });
+
+  // const [child, setChild] = useState({
+  //   fullName: "nguyen van a",
+  //   gender: "Nam",
+  //   birthday: "",
+  //   nationality: "Viet Nam",
+  //   citizenIdentNumber: "123456789102",
+  // });
 
   useEffect(() => {
     const getCity = async () => {
@@ -1027,9 +1055,9 @@ export const AdoptionForm = () => {
                         onChange={handleChildChange}
                       >
                         <option value="">Chọn giới tính (*)</option>
-                        <option value="Nam">Nam</option>
-                        <option value="Nữ">Nữ</option>
-                        <option value="Khác">Khác</option>
+                        <option value="nam">Nam</option>
+                        <option value="nữ">Nữ</option>
+                        <option value="khác">Khác</option>
                       </select>
                       <span className="err-message">{childErros.gender}</span>
                     </div>

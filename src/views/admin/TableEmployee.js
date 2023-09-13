@@ -8,6 +8,7 @@ import usePrivateApi from "api/usePrivateApi";
 export default function TableEmployee() {
   const privateApi = usePrivateApi();
   const [modalOpen, setModalOpen] = useState(false);
+  // const [modalOpen, setModalOpen] = useState(true);
 
   const [employees, setEmployees] = useState([]);
   const [isDataChange, setIsDataChange] = useState(false);

@@ -19,6 +19,8 @@ import { ChildDetailModal } from "components/Modals/ChildDetailModal";
 import { Pagination } from "@mui/material";
 import { ChildUpdateModal } from "components/Modals/ChildUpdateModal";
 import { ChildrenStatus } from "constant/Status";
+import { EmpDetailModal } from "components/Modals/EmpDetailModal";
+import { EmpForChildModal } from "components/Modals/EmpForChildModal";
 
 export default function CardTableChild({ color, isAddChild }) {
   const privateApi = usePrivateApi();
@@ -32,6 +34,8 @@ export default function CardTableChild({ color, isAddChild }) {
   const [currentChildChangeEmp, setCurrentChildChangeEmp] = useState(0);
   const [currentChildChangeState, setCurrentChildChangeState] = useState(0);
 
+  const [currentChildAddEmp, setCurrentChildAddEmp] = useState(null);
+
   const [employees, setEmployees] = useState([]);
   const [isDataChange, setIsDataChange] = useState(false);
 
@@ -42,6 +46,8 @@ export default function CardTableChild({ color, isAddChild }) {
   const [currentChildDetal, setCurrentChildDetail] = useState();
   const [currentChildupdate, setCurrentChildUpdate] = useState();
 
+  const [empDetail, setEmpDetail] = useState(null);
+
   const limit = 5;
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPage, setTotalPage] = useState(0);
@@ -50,8 +56,8 @@ export default function CardTableChild({ color, isAddChild }) {
   const [nameSearch, setNameSearch] = useState("");
 
   const [sort, setSort] = useState({
-    sortBy: "",
-    sortDirec: "",
+    sortBy: "dateIn",
+    sortDirec: "DESC",
   });
 
   useEffect(() => {
@@ -104,13 +110,13 @@ export default function CardTableChild({ color, isAddChild }) {
     }
   }, [currentPage, isAddChild, isDataChange, statusFilter, sort, nameSearch]);
 
-  useEffect(() => {
-    const getEmployees = async () => {
-      const response = await privateApi.getEmployeesByJob("chăm sóc trẻ");
-      setEmployees(response.data);
-    };
-    employees.length == 0 && getEmployees();
-  }, [currentChildChangeEmp]);
+  // useEffect(() => {
+  //   const getEmployees = async () => {
+  //     const response = await privateApi.getEmployeesByJob("chăm sóc trẻ");
+  //     setEmployees(response.data);
+  //   };
+  //   employees.length == 0 && getEmployees();
+  // }, [currentChildChangeEmp]);
 
   useEffect(() => {
     const getStatus = async () => {
@@ -259,7 +265,6 @@ export default function CardTableChild({ color, isAddChild }) {
                   <th>Ảnh</th>
                   <th>Họ và tên</th>
                   <th>
-                    {/* Ngày sinh */}
                     <div className="flex">
                       <div
                         className="mr-2"
@@ -416,7 +421,43 @@ export default function CardTableChild({ color, isAddChild }) {
                       <td>{child.typeOfOrphan.orphanTypeName}</td>
                       <td>{child.dateIn}</td>
                       <td>
-                        {(child.childrenStatus.status ==
+                        {child.childrenStatus.status ==
+                          ChildrenStatus.Available ||
+                        child.childrenStatus.status ==
+                          ChildrenStatus.Processing ? (
+                          <>
+                            {" "}
+                            {child?.employee ? (
+                              <span
+                                style={{ cursor: " pointer" }}
+                                onClick={() => setEmpDetail(child.employee)}
+                              >
+                                {child?.employee.fullName}
+                              </span>
+                            ) : (
+                              <>
+                                <button
+                                  style={{
+                                    padding: "5px",
+                                    backgroundColor: "red",
+                                    color: "white",
+                                    borderRadius: "5px",
+                                  }}
+                                  onClick={() => {
+                                    setCurrentChildAddEmp(child);
+                                  }}
+                                >
+                                  {/* <BsPlusCircleFill /> */}
+                                  <span>Thêm nhân viên</span>
+                                </button>
+                              </>
+                            )}
+                          </>
+                        ) : (
+                          <></>
+                        )}
+
+                        {/* {(child.childrenStatus.status ==
                           ChildrenStatus.Available ||
                           child.childrenStatus.status ==
                             ChildrenStatus.Processing) && (
@@ -465,7 +506,7 @@ export default function CardTableChild({ color, isAddChild }) {
                               </>
                             )}
                           </>
-                        )}
+                        )} */}
                       </td>
                       <td>
                         <div className="flex whitespace-nowrap">
@@ -513,7 +554,7 @@ export default function CardTableChild({ color, isAddChild }) {
                         )} */}
                       </td>
                       <td>
-                        <div className="">
+                        <div className="" style={{ textWrap: "nowrap" }}>
                           {!child.citizenId && (
                             <button
                               className="flex items-center "
@@ -614,6 +655,23 @@ export default function CardTableChild({ color, isAddChild }) {
             setIsDataChange(!isDataChange);
           }}
           children={currentChildupdate}
+        />
+      )}
+      {empDetail && (
+        <EmpDetailModal
+          employee={empDetail}
+          onClose={() => setEmpDetail(null)}
+        />
+      )}
+      {currentChildAddEmp && (
+        <EmpForChildModal
+          children={currentChildAddEmp}
+          onClose={() => {
+            setCurrentChildAddEmp(null);
+          }}
+          onSubmit={() => {
+            setIsDataChange(!isDataChange);
+          }}
         />
       )}
     </>

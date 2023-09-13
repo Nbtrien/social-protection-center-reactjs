@@ -354,7 +354,7 @@ export const ChildModal = ({ closeModal, onSubmit, defaultValue }) => {
                   onChange={handleTypeOChange}
                 >
                   <option value={0} selected disabled>
-                    Chọn loại trẻ
+                    Chọn loại trẻ (*)
                   </option>
                   {orphanTypes.map((orphanType, index) => (
                     <option key={index} value={orphanType.orphanTypeId}>

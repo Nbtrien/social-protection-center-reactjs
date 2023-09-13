@@ -62,10 +62,62 @@ const usePrivateApi = () => {
       }
       return axPrivate.get(url);
     },
-    getEmployeesByJob: (job, params) => {
-      const url = "job/" + job + "/employees";
-      return axPrivate.get(url, params);
+
+    getWorkingEmployees: (params) => {
+      let url = "employees/working?";
+      if (params) {
+        for (const [key, value] of Object.entries(params)) {
+          url = url + `${key}=${value}&`;
+        }
+      }
+      return axPrivate.get(url);
     },
+
+    getEmployeeQuits: (params) => {
+      let url = "employees/quits?";
+      if (params) {
+        for (const [key, value] of Object.entries(params)) {
+          url = url + `${key}=${value}&`;
+        }
+      }
+      return axPrivate.get(url);
+    },
+
+    getWorkingEmployeesByJob: (jobId, params) => {
+      let url = "job/" + jobId + "/employees/working?";
+      if (params) {
+        for (const [key, value] of Object.entries(params)) {
+          url = url + `${key}=${value}&`;
+        }
+      }
+      return axPrivate.get(url);
+    },
+
+    getEmployeeQuitsByJob: (jobId, params) => {
+      let url = "job/" + jobId + "/employees/quits?";
+      if (params) {
+        for (const [key, value] of Object.entries(params)) {
+          url = url + `${key}=${value}&`;
+        }
+      }
+      return axPrivate.get(url);
+    },
+
+    // getEmployeesByJob: (job, params) => {
+    //   const url = "job/" + job + "/employees";
+    //   return axPrivate.get(url, params);
+    // },
+
+    getEmployeesByJob: (jobId, params) => {
+      let url = "job/" + jobId + "/employees?";
+      if (params) {
+        for (const [key, value] of Object.entries(params)) {
+          url = url + `${key}=${value}&`;
+        }
+      }
+      return axPrivate.get(url);
+    },
+
     getChildrenByEmployee: (employeeId, params) => {
       const url = "employee/" + employeeId + "/children";
       return axPrivate.get(url, params);
@@ -289,6 +341,16 @@ const usePrivateApi = () => {
     getChildrenByAdoptChild: (params) => {
       const url = "children/child-adopted";
       return axPrivate.post(url, params);
+    },
+
+    updateEmployee: (id, params) => {
+      const url = "employees/" + id;
+      return axPrivate.put(url, params);
+    },
+
+    getEmployeeForChild: (childId, params) => {
+      const url = "children/" + childId + "/employees";
+      return axPrivate.get(url, params);
     },
   };
 

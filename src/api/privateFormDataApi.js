@@ -19,7 +19,11 @@ const PrivateFormDataApi = () => {
     addArticle: (params) => {
       const url = "articles";
       return axiosPrivate.post(url, params);
-    }
+    },
+    updateEmployee: (params) => {
+      const url = "employees";
+      return axiosPrivate.put(url, params);
+    },
   };
 
   return privateFDataApi;
